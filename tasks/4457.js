@@ -59,7 +59,7 @@ function deepCopy(obj){
 const shallowCopiedObject = deepCopy(ankit);
 
 
-shallowCopiedObject.item.age=30
+// shallowCopiedObject.item.age=30
 
 // console.log('------------------')
 // shallowCopiedObject.key1=10
@@ -69,10 +69,8 @@ shallowCopiedObject.item.age=30
 // shallowCopiedObject.key2.b[2]=100;
 
 
-console.log(ankit)
-// console.log(shallowCopiedObject);
-const obj22 = ankit;
-obj22.item.ankit = 'st';
-console.log(obj22);
-
-
+// console.log(ankit)
+// // console.log(shallowCopiedObject);
+// const obj22 = shallowCopiedObject;
+// obj22.item.ankit = 'st';
+// console.log(obj22);

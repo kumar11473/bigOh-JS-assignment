@@ -139,23 +139,78 @@ let [a,b,c,length]=arr3
 
 
 // -------------------------------------  Rest and spread operator  ----------------------------
+
+// The rest parameter, however, is a real array object. As such, you can use all array methods on it.
+// rest operator puts the rest of some specific user-supplied values into a JavaScript array. But the spread syntax expands iterables into individual elements.
+
+
 function func(a){
     console.log("inside 1 para func")
     console.log(a)
 }
 
 function func(a,b,...args){
-    "use strict"    //SyntaxError: Illegal 'use strict' directive in function with non-simple parameter list
+    // "use strict"    //SyntaxError: Illegal 'use strict' directive in function with non-simple parameter list
     console.log("inside 3 para func")
     console.log(a,b,args);
 }
 
 
 // whichever func is written in lowest part will be called upon calling func() with any number of parameter
-func(1,2,{a:2,b:3}) // 1 2 [ { a: 2, b: 3 } ]
-func(1,2,[1,2,3])  //   1 2 [ [ 1, 2, 3 ] ]
+// func(1,2,{a:2,b:3}) // 1 2 [ { a: 2, b: 3 } ]
+// func(1,2,[1,2,3])  //   1 2 [ [ 1, 2, 3 ] ]
+
 // output : inside 3 para func 1 undefined [] 
 //  because The reason for the “undefined” in the output is: In JavaScript,
 //  if two functions are defined with
 //  the same name then the last defined function will overwrite the former function. 
 
+
+
+
+        // rest operator create a shallow copy of the array we spread using ...
+// const myName = ["Sofela", "is", "my"];
+// const aboutMe = ["Oluwatobi", ...myName, "name."];
+// myName[0]="jackyy"
+// console.log(myName)
+// console.log(aboutMe);
+
+// if we did not use the spread syntax to duplicate myName’s content then a refenced would be allocated .
+// const referencedAboutMe = ['sjohn',myName,'jack']
+// myName[1]='funckkk u'
+// console.log(referencedAboutMe)
+
+// The invocation above will return:
+// ["Oluwatobi", "Sofela", "is", "my", "name."]
+
+
+let myName = 'appl'
+
+// let spreaded = {...myName}  // { '0': 'a', '1': 'p', '2': 'p', '3': 'l' }
+
+// let spreaded1=[...myName]   [ 'a', 'p', 'p', 'l' ]
+// console.log(spreaded1)
+
+// let x = (...myName)  // this will give error
+
+// function func(a,b,c){
+//   console.log(a,b,c)
+// }
+
+// let arg=[1,2,,] // undefind
+// func(...arg)
+
+
+
+// The spread operator does not clone identical properties
+// Suppose you used the spread operator to clone properties from object A into object B. 
+// And suppose object B contains properties identical to those
+//  in object A. In such a case, B’s versions will override those inside A.
+
+const myName1 = { firstName: "Tobi", lastName: "Sofela" };
+const bio = { ...myName, firstName: "Oluwatobi", website: "codesweetly.com" };
+
+
+console.log(bio);  // { firstName: "Oluwatobi", lastName: "Sofela", website: "codesweetly.com" };
+
+// The invocation above will return:
