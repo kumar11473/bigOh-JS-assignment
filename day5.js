@@ -1,6 +1,11 @@
 
 // ------------------------ destructuring assisgnment -------------------------------
 
+// Destructuring Assignment is a JavaScript expression that allows to unpack values from arrays, or properties from objects, 
+// into distinct variables data can be extracted from arrays, objects, nested objects and assigning to variables.
+
+
+
 // .se bachne k liye kaam ata hai
 // const arr= [10, 20,{x: 30, y: 40,z: 50}]
 
@@ -80,7 +85,7 @@ function drawChart({cords={x:0,y:0},size=1}){
 
 
 
-  // --- important descructuring 
+  // --------------- important destructuring 
 
   const metadata = {
     title: "Scratchpad",
@@ -105,7 +110,7 @@ function drawChart({cords={x:0,y:0},size=1}){
       },
     ],
   } = metadata;
-  
+
 //   console.log(englishTitle); // "Scratchpad" 
 //   console.log(localeTitle); // "JavaScript-Umgebung"
  
@@ -128,10 +133,10 @@ function drawChart({cords={x:0,y:0},size=1}){
 // note: if undefined is inside a object or array then no erro but if we try to destructure a undefined then error occur
 
 
-let arr3=[1,2,3]
+// let arr3=[1,2,3]
 
-// let {a,b,c}=arr3  undefined undefined undefined
-let [a,b,c,length]=arr3
+// let {a,b,c}=arr3  undefined undefined undefined (because we are destructuring array to an object)
+// let [a,b,c,length]=arr3  // 1 2 3 undefined
 // console.log(a,b,c,length)
 
 
@@ -144,16 +149,16 @@ let [a,b,c,length]=arr3
 // rest operator puts the rest of some specific user-supplied values into a JavaScript array. But the spread syntax expands iterables into individual elements.
 
 
-function func(a){
-    console.log("inside 1 para func")
-    console.log(a)
-}
+// function func(a){
+//     console.log("inside 1 para func")
+//     console.log(a)
+// }
 
-function func(a,b,...args){
-    // "use strict"    //SyntaxError: Illegal 'use strict' directive in function with non-simple parameter list
-    console.log("inside 3 para func")
-    console.log(a,b,args);
-}
+// function func(a,b,...args){
+//     // "use strict"    //SyntaxError: Illegal 'use strict' directive in function with non-simple parameter list
+//     console.log("inside 3 para func")
+//     console.log(a,b,args);
+// }
 
 
 // whichever func is written in lowest part will be called upon calling func() with any number of parameter
@@ -165,6 +170,12 @@ function func(a,b,...args){
 //  if two functions are defined with
 //  the same name then the last defined function will overwrite the former function. 
 
+
+
+    // can't use spread operator with object because obj is not iterable
+// let objj={a:1,b:2}
+// let c = [...objj]
+// console.log(c)
 
 
 
@@ -184,7 +195,7 @@ function func(a,b,...args){
 // ["Oluwatobi", "Sofela", "is", "my", "name."]
 
 
-let myName = 'appl'
+// let myName = 'appl'
 
 // let spreaded = {...myName}  // { '0': 'a', '1': 'p', '2': 'p', '3': 'l' }
 
@@ -207,10 +218,60 @@ let myName = 'appl'
 // And suppose object B contains properties identical to those
 //  in object A. In such a case, B’s versions will override those inside A.
 
-const myName1 = { firstName: "Tobi", lastName: "Sofela" };
-const bio = { ...myName, firstName: "Oluwatobi", website: "codesweetly.com" };
+// const myName1 = { firstName: "Tobi", lastName: "Sofela" };
+// const bio = { ...myName, firstName: "Oluwatobi", website: "codesweetly.com" };
 
 
-console.log(bio);  // { firstName: "Oluwatobi", lastName: "Sofela", website: "codesweetly.com" };
+// console.log(bio);  // { firstName: "Oluwatobi", lastName: "Sofela", website: "codesweetly.com" };
 
-// The invocation above will return:
+// ---------------------------------------    Template Literal ----------------------------
+
+//  template literal lets you embed variables and expressions within your strings.
+// Template literals are enclosed by backtick (`) characters instead of double or single quotes.
+// provide better way to for string manipulation instead of using +s
+// used for writing multiline strings
+const regularString = 'this is a \n'+
+  'javascript string ';
+
+  
+  // The template string recognises whitespaces and linebreaks automatically. no need to use \n and '+
+const templateLiteralString = ` this is a 
+javascript string `  
+
+// use cases
+//  in jsx  <p>` hello  user , &{name}`</p>    here name is a const [name,setname]=useState();
+
+    // create dynamic sql queries
+// const tableName = "users";
+// const columnName = "name";
+// const searchValue = "John";
+    
+// const sqlQuery = `SELECT * FROM ${tableName} WHERE ${columnName} = '${searchValue}'`
+
+
+                          // tagged template literal
+function taggedFunction (string, ...values){
+
+  console.log(string)   // [ 'there are ', ' of ', '' ]
+  console.log(values)  //  [ 5, 'fruit' ]
+
+}
+
+const number = 5;
+const entity = "fruit"
+
+// below function is called tagged function that take template literal as argument  and not parenthesis. 
+// a tagged function take tagged template
+taggedFunction`there are ${number} of ${entity}`
+
+
+// taggedFunction`Hello ${name}. Welcome to ${city}.` ✅
+
+// taggedFunction(Hello ${name}. Welcome to ${city}.) ❌
+
+taggedFunction(`Hello ${number}. Welcome to ${entity}.`)
+// above code will produce  output :
+//  Hello 5. Welcome to fruit.
+// []
+
+
