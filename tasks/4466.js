@@ -161,9 +161,9 @@ function updateComponents(routes, subscription) {
     //     addRedirect(subscription,updatedRoutes)
     // }
     for (const route of routes) {
-        console.log(route)
+        // console.log(route)
         let subMod;
-        let ind 
+      
         if(typeof subscription != "undefined" ){
             subMod = subscription.find((sub)=>{ return (sub.name === route.name && sub.isSub == true)});
             // ind = subscription.findInd((sub)=>{ return (sub.name === route.name && sub.isSub == true)});
@@ -209,5 +209,5 @@ function updateComponents(routes, subscription) {
   // Update components based on subscription
   const resultRoutes = updateComponents(routes, subscription);
 console.log("Resulttttttttttttttttt")
-console.log(resultRoutes[4]);
+console.log(JSON.stringify(resultRoutes));
   
