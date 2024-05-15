@@ -271,7 +271,9 @@ taggedFunction`there are ${number} of ${entity}`
 
 taggedFunction(`Hello ${number}. Welcome to ${entity}.`)
 // above code will produce  output :
-//  Hello 5. Welcome to fruit.
+//  Hello 5. Welcome to 
 // []
 
+
+// intentional added line for learning git conflict 
 
