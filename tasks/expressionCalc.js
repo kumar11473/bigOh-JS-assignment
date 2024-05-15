@@ -56,8 +56,8 @@ let array2D = Array.from({ length: rows }, () => Array(cols).fill(-1));
 // function fun(a){ return a+2;}
 
 
-console.log(a)
+// console.log(a)
 // var a=2; var a ; a=2
-cons
+
 
 

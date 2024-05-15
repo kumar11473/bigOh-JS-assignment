@@ -1,1 +1,0 @@
-key1 in Object.keys(obj)
