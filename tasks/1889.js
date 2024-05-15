@@ -11,7 +11,7 @@
     use proper variable declaration
 
 */
- const op = ['square','sqrt','sin','cos','pow','area']
+const op = ['square','sqrt','sin','cos','pow','area']
 
 const operation = {
     'square': (a)=> a*a,
