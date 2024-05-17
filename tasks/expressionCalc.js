@@ -115,13 +115,57 @@ const data = [
   }
 ]
 
-const newData = data.map((obj)=>{
-  if(obj.id>5){
-    obj.dob='1/12/2002'
-    return obj;
+// wrong approach
+// const newData = data.map((obj)=>{
+//   if(obj.id>5){
+//     obj.dob='1/12/2002'
+//     return obj;
+//   }
+//   return obj
+// })
+
+
+const newd = data.map((item)=>({
+  ...item,
+  ...( item.id>5 &&{dob:'12/11/2024'})
+}))
+
+
+// console.log(newd)
+// const n= data.map(()=>{})
+
+// ()=>{}
+
+
+// ()=>({...statements}) // agar kuchh return krwana to ye use kre . return likhne ki jarurat nhi
+
+
+
+// console.log(newd)
+
+// imobilothone 3.0
+
+// let a=5;
+// try {
+
+//   if(a>1){
+//     throw new RangeError('errore')
+//   }
+  
+// } catch (error) {
+//     console.log(error)
+// }
+
+
+
+const video ={
+  title:'111',
+  tags:['a,','b','c'],
+  play(){
+    this.tags.forEach(function(tag){
+      console.log(this.title,tag)
+    },this)         // the second argument of forEach is thisArg that refernce to ojbect that is call the play method(i.e. video object)
   }
-  return obj
-})
+}
 
-
-console.log(newData)
+video.play()

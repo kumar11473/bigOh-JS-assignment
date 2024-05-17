@@ -15,6 +15,17 @@ const source={
     }
   }     
 
+  const source2={
+    "keyOne": "value One",
+    "keyTwo": "value Two",
+    "keyThree": "value Three",
+    "keyFour": {
+      "keyA": true,
+      "keyB": false,
+    },
+    "keyFive":"value Five"
+  } 
+
   
 const result ={
     "keyOne": "value One",
@@ -26,24 +37,46 @@ const result ={
     "keyFour.keyC.keyCTwo": "key C two value",
     "keyFour.keyC.keyCThree": 1234 
   }
-const isObject = (obj)=>{
-    return (obj !== null && typeof obj === 'object')
+const arrayData =[1,2,3,4,5]
+
+const TYPES = ['integer','boolean','string','null','undefined','Symbol']
+
+const validator = (data)=>{
+  return (TYPES.includes(data))
 }
 
-  function jsonManipulation2(obj){
-    const tempObj={}
+const isObject = (obj,type)=>{
+  // validator functions, fn(data,'type')=> true/false ['object','',..........].includes(typeof object);
+    return (obj!= null && typeof obj=== type)
+}
 
-    for(key of Object.keys(obj)){
-        if(isObject(obj[key])){
-                    // not completed
+  function jsonManipulation2(obj,type){
+    
+    const tempObj={}
+    for(let key of Object.keys(obj)){
+
+        if(!isObject(obj[key],type)){
+          tempObj[`${key}`]=obj[key];
+        }
+        else{
+              let tempObj2=jsonManipulation2(obj[key],type)
+              for(let subKey of Object.keys(tempObj2)){
+                tempObj[`${key}.${subKey}`]=tempObj2[subKey];
+              }
         }
     }
-
     return tempObj
   }
 
 
-  const newJSON = jsonManipulation2(source);
 
-  console.log(newJSON);
+
+  let newJSON;
+  if(validator(source)){
+    newJSON ='json manipulation doesn\'t work on  primitive data types'
+  }else{
+    newJSON = jsonManipulation2(source,'object');
+  }
+
+  console.log(JSON.stringify(newJSON));
 
